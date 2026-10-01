@@ -3,6 +3,13 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 .env
+.env.local
+node_modules/
+dist/
+.vercel/
+test-results/
+playwright-report/
+web/public/live.json
 logs/*
 !logs/.gitkeep
 database/*.db*

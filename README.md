@@ -4,6 +4,20 @@ POC Python de veille médiatique et institutionnelle sur des personnalités poli
 
 **Le score de visibilité décrit la couverture observée. Ce n'est ni un sondage, ni un score de popularité électorale, ni une mesure d'intention de vote.** La liste initiale est une liste de suivi configurable, sans affirmation de candidature à l'élection de 2027.
 
+## Application web sur Vercel
+
+Une interface React/Vite dans `web/` fournit la vue d'ensemble, les personnalités, la matrice thématique, les actualités, les fiches rencontre et les exports CSV. Elle affiche les données réelles publiées dans une base **Supabase dédiée** ; GitHub Actions exécute le pipeline Python quotidiennement. Le stockage persiste entre les machines et déploiements.
+
+Voir **[docs/VERCEL.md](docs/VERCEL.md)** pour créer la nouvelle base, installer le schéma, ajouter les secrets GitHub/Vercel et déployer avec **Root Directory = `web`**. Les accès aux comptes doivent être configurés ; le dépôt ne contient aucune clé. La connexion réelle est sélectionnée par défaut. Un aperçu fictif séparé permet de tester l'interface sans simuler une collecte réussie.
+
+```bash
+cd web
+npm ci
+npm run dev
+```
+
+Le reste de ce README décrit le pipeline Python, également utilisable indépendamment du site.
+
 ## Démarrage sous Windows
 
 Pré requis : Python **3.11 ou plus récent** et un terminal ouvert dans le dépôt `veille-2027`.
@@ -48,7 +62,7 @@ python scripts/run_pipeline.py --demo
 python -m pytest -q
 ```
 
-Le dépôt et ses chemins sont résolus par le code ; les scripts fonctionnent aussi lorsqu'ils sont lancés par leur chemin absolu depuis un autre répertoire. Aucune application web ni service permanent n'est nécessaire.
+Le dépôt et ses chemins sont résolus par le code ; les scripts fonctionnent aussi lorsqu'ils sont lancés par leur chemin absolu depuis un autre répertoire. Le pipeline Python ne nécessite pas de service permanent ; l'application web est une interface supplémentaire.
 
 ## Démonstration immédiate, sans clé
 
@@ -242,7 +256,7 @@ API/RSS → collectors → Content → cleaner/deduplicator → SQLite
 
 `src/pipeline.py` orchestre les fonctions indépendamment des CLI. `src/database/repository.py` regroupe le SQL ; remplacer ce composant permet une migration vers PostgreSQL. Dataiku ou un ordonnanceur peut appeler les fonctions ou scripts, sans dépendre de Power BI. Le schéma SQLite contient deux relations polymorphes (`content_topics` et `content_personalities`) dont l'intégrité vers les contenus est gérée par le dépôt ; une migration devra créer les contraintes adaptées.
 
-V2 envisagée, sans implémentation immédiate : PostgreSQL, Dataiku, FastAPI, application web, résumés IA, embeddings, sémantique et recherche plein texte. V3 : alertes, archive longue durée, comparaison d'interventions, fiches automatiques et orchestration quotidienne. La V1 n'identifie pas automatiquement des « interventions importantes » : utiliser les dates, thèmes et liens pour une sélection humaine.
+L'application web, le stockage de snapshots PostgreSQL/Supabase et l'orchestration quotidienne GitHub Actions sont maintenant implémentés ; ils nécessitent un raccordement aux comptes pour fonctionner en production. Évolutions envisagées : tables PostgreSQL analytiques normalisées, Dataiku, API métier, résumés IA, embeddings, sémantique, recherche plein texte et alertes. Le POC n'identifie pas automatiquement des « interventions importantes » : utiliser les dates, thèmes et liens pour une sélection humaine.
 
 ## Protection des données et limites
 

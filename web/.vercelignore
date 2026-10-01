@@ -1,0 +1,4 @@
+.env*
+public/live.json
+test-results/
+playwright-report/
