@@ -1,0 +1,12 @@
+{
+  "cat_nat": ["catastrophe naturelle", "catastrophes naturelles", "cat nat"],
+  "climat": ["climat", "changement climatique", "réchauffement climatique", "adaptation climatique"],
+  "inondation": ["inondation", "inondations", "crue", "crues"],
+  "secheresse": ["sécheresse", "retrait-gonflement des argiles", "RGA"],
+  "assurance": ["assurance", "assureurs", "réassurance", "réassureur"],
+  "prevention": ["prévention", "prévention des risques", "résilience"],
+  "collectivites": ["collectivités", "collectivités territoriales", "maires", "départements", "régions"],
+  "logement": ["logement", "habitation", "construction"],
+  "agriculture": ["agriculture", "agriculteurs", "risque agricole"],
+  "finances_publiques": ["finances publiques", "budget", "dépenses publiques", "déficit"]
+}

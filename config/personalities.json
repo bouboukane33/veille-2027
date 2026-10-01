@@ -1,0 +1,12 @@
+[
+  {"id": "edouard_philippe", "name": "Édouard Philippe", "status": "suivi", "keywords": ["Édouard Philippe", "Edouard Philippe"]},
+  {"id": "gabriel_attal", "name": "Gabriel Attal", "status": "suivi", "keywords": ["Gabriel Attal"]},
+  {"id": "marine_le_pen", "name": "Marine Le Pen", "status": "suivi", "keywords": ["Marine Le Pen"]},
+  {"id": "jordan_bardella", "name": "Jordan Bardella", "status": "suivi", "keywords": ["Jordan Bardella"]},
+  {"id": "jean_luc_melenchon", "name": "Jean-Luc Mélenchon", "status": "suivi", "keywords": ["Jean-Luc Mélenchon", "Jean Luc Mélenchon"]},
+  {"id": "raphael_glucksmann", "name": "Raphaël Glucksmann", "status": "suivi", "keywords": ["Raphaël Glucksmann", "Raphael Glucksmann"]},
+  {"id": "olivier_faure", "name": "Olivier Faure", "status": "suivi", "keywords": ["Olivier Faure"]},
+  {"id": "fabien_roussel", "name": "Fabien Roussel", "status": "suivi", "keywords": ["Fabien Roussel"]},
+  {"id": "eric_zemmour", "name": "Éric Zemmour", "status": "suivi", "keywords": ["Éric Zemmour", "Eric Zemmour"]},
+  {"id": "dominique_de_villepin", "name": "Dominique de Villepin", "status": "suivi", "keywords": ["Dominique de Villepin"]}
+]

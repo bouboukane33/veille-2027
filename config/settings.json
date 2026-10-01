@@ -1,0 +1,23 @@
+{
+  "lookback_days": 30,
+  "max_news_per_personality": 30,
+  "max_youtube_videos_per_personality": 10,
+  "enable_news": true,
+  "enable_youtube": true,
+  "rss_feeds": [
+    "https://www.francetvinfo.fr/politique.rss",
+    "https://www.lemonde.fr/politique/rss_full.xml"
+  ],
+  "request_timeout_seconds": 15,
+  "request_retries": 1,
+  "youtube_max_search_requests": 10,
+  "dedup_title_threshold": 0.94,
+  "dedup_date_window_days": 2,
+  "trend_threshold_points": 2.0,
+  "visibility_weights": {"news": 0.35, "views": 0.30, "engagement": 0.15, "frequency": 0.20},
+  "relevance_weights": {"volume": 0.50, "diversity": 0.30, "recency": 0.20},
+  "relevance_volume_target": 10,
+  "relevance_half_life_days": 7,
+  "brief_days": 7,
+  "latest_activity_limit": 200
+}
