@@ -38,6 +38,7 @@ import {
   YAxis,
 } from 'recharts';
 import type { ApiError, Content, Dataset } from './types';
+import { portraits } from './portraits';
 import {
   colors,
   csvDownload,
@@ -95,9 +96,23 @@ const currentPage = (): Page =>
     : 'overview';
 
 function Avatar({ name, index = 0 }: { name: string; index?: number }) {
+  const portrait = portraits[name];
+  const [failedSource, setFailedSource] = useState<string | null>(null);
   return (
     <span className={`avatar avatar-${index % 5}`} aria-hidden="true">
-      {initials(name)}
+      {portrait && failedSource !== portrait.src ? (
+        <img
+          src={portrait.src}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          width={80}
+          height={80}
+          onError={() => setFailedSource(portrait.src)}
+        />
+      ) : (
+        initials(name)
+      )}
     </span>
   );
 }
@@ -718,25 +733,25 @@ export default function App() {
                               <CartesianGrid
                                 strokeDasharray="3 5"
                                 vertical={false}
-                                stroke="#e9eeed"
+                                stroke="#DDE3E8"
                               />
                               <XAxis
                                 dataKey="label"
                                 tickLine={false}
                                 axisLine={false}
                                 minTickGap={36}
-                                tick={{ fontSize: 11, fill: '#82908d' }}
+                                tick={{ fontSize: 11, fill: '#4C6A75' }}
                               />
                               <YAxis
                                 domain={[0, 100]}
                                 tickLine={false}
                                 axisLine={false}
-                                tick={{ fontSize: 11, fill: '#82908d' }}
+                                tick={{ fontSize: 11, fill: '#4C6A75' }}
                               />
                               <Tooltip
                                 contentStyle={{
                                   borderRadius: 10,
-                                  border: '1px solid #e4eae7',
+                                  border: '1px solid #C6D3D7',
                                   fontSize: 12,
                                 }}
                               />
@@ -971,7 +986,7 @@ export default function App() {
                                         className={`matrix-cell ${count ? 'has-value' : ''}`}
                                         style={{
                                           backgroundColor: count
-                                            ? `rgba(18,116,97,${Math.min(0.7, 0.1 + count * 0.1)})`
+                                            ? `rgba(0,43,59,${Math.min(0.7, 0.1 + count * 0.1)})`
                                             : undefined,
                                           color: count > 3 ? '#fff' : undefined,
                                         }}
@@ -1298,6 +1313,34 @@ export default function App() {
                         </p>
                       </Panel>
                     </div>
+                    {Object.keys(portraits).length > 0 && (
+                      <details className="panel photo-credits">
+                        <summary>Crédits photographiques</summary>
+                        <ul>
+                          {Object.entries(portraits).map(([name, portrait]) => (
+                            <li key={name}>
+                              <strong>{name}</strong> · {portrait.author} ·{' '}
+                              <a
+                                href={portrait.licenseUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {portrait.license}
+                              </a>{' '}
+                              ·{' '}
+                              <a
+                                href={portrait.sourceUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                Photographie originale
+                              </a>
+                              <small>Wikimedia Commons · Cadrage adapté à l’interface.</small>
+                            </li>
+                          ))}
+                        </ul>
+                      </details>
+                    )}
                     <div className="notice">
                       <ShieldCheck size={19} />
                       <p>

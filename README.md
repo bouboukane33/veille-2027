@@ -6,6 +6,8 @@ POC Python de veille médiatique et institutionnelle sur des personnalités poli
 
 ## Application web sur Vercel
 
+L'interface utilise la palette digitale CCR 2026 (bleu `#002B3B`, gris bleutés, accents jaunes) et Albert Sans embarquée. Voir [docs/DESIGN.md](docs/DESIGN.md) pour les références et le registre des portraits/crédits.
+
 Une interface React/Vite dans `web/` fournit la vue d'ensemble, les personnalités, la matrice thématique, les actualités, les fiches rencontre et les exports CSV. Elle affiche les données réelles publiées dans une base **Supabase dédiée** ; GitHub Actions exécute le pipeline Python quotidiennement. Le stockage persiste entre les machines et déploiements.
 
 Voir **[docs/VERCEL.md](docs/VERCEL.md)** pour créer la nouvelle base, installer le schéma, ajouter les secrets GitHub/Vercel et déployer avec **Root Directory = `web`**. Les accès aux comptes doivent être configurés ; le dépôt ne contient aucune clé. La connexion réelle est sélectionnée par défaut. Un aperçu fictif séparé permet de tester l'interface sans simuler une collecte réussie.

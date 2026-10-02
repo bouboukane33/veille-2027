@@ -30,7 +30,7 @@ export const initials = (name: string) =>
     .map((p) => p[0])
     .slice(0, 2)
     .join('');
-export const colors = ['#127461', '#729e8b', '#cea867', '#6c83a3', '#b68383'];
+export const colors = ['#002B3B', '#1E7DCC', '#668089', '#2D515E', '#D2E700'];
 
 export function derive(data: Dataset, personId: string, days: number) {
   const end = new Date(data.as_of + 'T12:00:00Z');
